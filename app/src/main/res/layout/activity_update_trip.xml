@@ -300,7 +300,6 @@
                 style="@style/Widget.MaterialComponents.Button" />
         </LinearLayout>
 
-        <!-- Helper Text -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
