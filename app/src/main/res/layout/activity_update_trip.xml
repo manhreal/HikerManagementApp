@@ -12,7 +12,7 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Header Section -->
+        <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <!-- Trip Name -->
+                <!-- Name -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -84,7 +84,6 @@
                     app:boxCornerRadiusBottomEnd="12dp"
                     app:boxStrokeColor="#FF9800"
                     app:hintTextColor="#FF9800"
-                    app:startIconDrawable="@android:drawable/ic_dialog_map"
                     app:startIconTint="#FF9800"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -109,7 +108,6 @@
                     app:boxCornerRadiusBottomEnd="12dp"
                     app:boxStrokeColor="#FF9800"
                     app:hintTextColor="#FF9800"
-                    app:startIconDrawable="@android:drawable/ic_dialog_info"
                     app:startIconTint="#FF9800"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -134,7 +132,6 @@
                     app:boxCornerRadiusBottomEnd="12dp"
                     app:boxStrokeColor="#FF9800"
                     app:hintTextColor="#FF9800"
-                    app:startIconDrawable="@android:drawable/ic_menu_my_calendar"
                     app:startIconTint="#FF9800"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -149,7 +146,7 @@
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Parking Checkbox -->
+                <!-- Parking -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -165,7 +162,7 @@
                         android:textColor="#263238"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="🅿️ Parking required"
+                        android:text="Parking required"
                         android:textSize="16sp"
                         android:padding="16dp"
                         android:buttonTint="#FF9800" />
@@ -184,7 +181,6 @@
                     app:boxCornerRadiusBottomEnd="12dp"
                     app:boxStrokeColor="#FF9800"
                     app:hintTextColor="#FF9800"
-                    app:prefixText="📏 "
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -196,17 +192,17 @@
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Difficulty Label -->
+                <!-- Difficulty -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="⚡ Difficulty *"
+                    android:text="Difficulty *"
                     android:textSize="14sp"
                     android:textColor="#546E7A"
                     android:textStyle="bold"
                     android:layout_marginBottom="8dp" />
 
-                <!-- Difficulty Spinner -->
+                <!-- Spinner -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -239,7 +235,6 @@
                     app:boxCornerRadiusBottomEnd="12dp"
                     app:boxStrokeColor="#FF9800"
                     app:hintTextColor="#FF9800"
-                    app:startIconDrawable="@android:drawable/ic_menu_edit"
                     app:startIconTint="#FF9800"
                     app:counterEnabled="true"
                     app:counterMaxLength="500"
@@ -262,7 +257,7 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Action Buttons -->
+        <!-- Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -289,12 +284,10 @@
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_weight="1"
-                android:text="Update Trip"
+                android:text="Update"
                 android:textSize="16sp"
-                app:icon="@android:drawable/ic_menu_save"
-                app:iconGravity="textStart"
-                app:iconTint="@android:color/white"
                 app:backgroundTint="#FF9800"
+                android:textColor="@color/white"
                 app:cornerRadius="12dp"
                 android:layout_marginStart="10dp"
                 style="@style/Widget.MaterialComponents.Button" />

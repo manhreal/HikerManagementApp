@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Header with Type and Time -->
+        <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
             android:gravity="center_vertical"
             android:layout_marginBottom="8dp">
 
-            <!-- Type Badge -->
+            <!-- Type -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,13 +55,6 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🕒"
-                    android:textSize="14sp"
-                    android:layout_marginEnd="4dp" />
-
-                <TextView
                     android:id="@+id/tvObservationTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -72,7 +65,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Image (if exists) -->
+        <!-- Image -->
         <ImageView
             android:id="@+id/imgObservation"
             android:layout_width="match_parent"
@@ -90,16 +83,7 @@
             android:background="#E0E0E0"
             android:layout_marginVertical="8dp" />
 
-        <!-- Note/Comment -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Note:"
-            android:textSize="12sp"
-            android:textColor="#78909C"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp" />
-
+        <!-- Note -->
         <TextView
             android:id="@+id/tvObservationComment"
             android:layout_width="match_parent"

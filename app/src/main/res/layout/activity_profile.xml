@@ -1,160 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
+
+    <!-- App Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/p_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar_gradient"
+            app:titleTextColor="@android:color/white"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:navigationIconTint="@android:color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F8F9FA">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:fillViewport="true">
 
-        <!-- App Bar -->
-        <com.google.android.material.appbar.AppBarLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="4dp">
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/p_tool_bar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@drawable/toolbar_gradient"
-                app:titleTextColor="@android:color/white"
-                app:navigationIcon="?attr/homeAsUpIndicator"
-                app:navigationIconTint="@android:color/white" />
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <!-- Main Content -->
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:fillViewport="true">
-
-            <LinearLayout
+            <!-- Profile Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_marginBottom="20dp">
 
-                <!-- Profile Card -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="24dp">
 
-                    <!-- Avatar with Change Button Below -->
+                    <!-- Avatar Section -->
                     <FrameLayout
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="20dp">
 
-                        <ImageView
-                            android:id="@+id/img_avatar"
+                        <!-- Avatar with Border -->
+                        <com.google.android.material.card.MaterialCardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:contentDescription="User Avatar"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_avt_default" />
+                            app:cardCornerRadius="70dp"
+                            app:cardElevation="4dp"
+                            app:strokeWidth="4dp"
+                            app:strokeColor="#00897B">
+
+                            <ImageView
+                                android:id="@+id/img_avatar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:contentDescription="User Avatar"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_avt_default" />
+
+                        </com.google.android.material.card.MaterialCardView>
 
                     </FrameLayout>
 
                     <!-- Update Avatar Button -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_p_update_avt"
-                        style="@style/Widget.MaterialComponents.Button"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="24dp"
                         android:paddingVertical="12dp"
-                        android:text="Update Avatar"
+                        android:text="Change Avatar"
                         android:textSize="15sp"
-                        app:backgroundTint="#1E88E5"
-                        app:cornerRadius="10dp"
-                        app:icon="@drawable/ic_change_avt"
-                        app:iconGravity="textStart"
-                        app:iconTint="@android:color/white" />
+                        android:textColor="#00897B"
+                        app:strokeColor="#00897B"
+                        app:strokeWidth="2dp"
+                        app:cornerRadius="12dp" />
 
-                    <!-- Info Rows -->
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#ECEFF1"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Info Section -->
+                    <!-- Name -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="14dp"
+                        android:layout_marginBottom="18dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="110dp"
-                            android:layout_height="wrap_content"
-                            android:text="Name:"
-                            android:textColor="#78909C"
-                            android:textSize="15sp" />
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#E0F2F1"
+                            android:layout_marginEnd="12dp">
 
-                        <TextView
-                            android:id="@+id/tv_p_name"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="👤"
+                                android:textSize="20sp"
+                                android:layout_gravity="center" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Nguyen Duc Manh"
-                            android:textColor="#263238"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Name"
+                                android:textColor="#90A4AE"
+                                android:textSize="12sp"
+                                android:layout_marginBottom="2dp" />
+
+                            <TextView
+                                android:id="@+id/tv_p_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Nguyen Duc Manh"
+                                android:textColor="#263238"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
                     </LinearLayout>
 
+                    <!-- Email -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="14dp"
+                        android:layout_marginBottom="18dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="110dp"
-                            android:layout_height="wrap_content"
-                            android:text="Email:"
-                            android:textColor="#78909C"
-                            android:textSize="15sp" />
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#E3F2FD"
+                            android:layout_marginEnd="12dp">
 
-                        <TextView
-                            android:id="@+id/tv_p_email"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="📧"
+                                android:textSize="20sp"
+                                android:layout_gravity="center" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="manhndgch220466@fpt.edu.vn"
-                            android:textColor="#263238"
-                            android:textSize="16sp" />
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Email"
+                                android:textColor="#90A4AE"
+                                android:textSize="12sp"
+                                android:layout_marginBottom="2dp" />
+
+                            <TextView
+                                android:id="@+id/tv_p_email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="manhndgch220466@fpt.edu.vn"
+                                android:textColor="#263238"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
                     </LinearLayout>
 
+                    <!-- Total Trips -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="14dp"
+                        android:layout_marginBottom="18dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="110dp"
-                            android:layout_height="wrap_content"
-                            android:text="Total Trip:"
-                            android:textColor="#78909C"
-                            android:textSize="15sp" />
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#FFF3E0"
+                            android:layout_marginEnd="12dp">
 
-                        <TextView
-                            android:id="@+id/tv_p_total_trip"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🎒"
+                                android:textSize="20sp"
+                                android:layout_gravity="center" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="10"
-                            android:textColor="#00897B"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total Trips"
+                                android:textColor="#90A4AE"
+                                android:textSize="12sp"
+                                android:layout_marginBottom="2dp" />
+
+                            <TextView
+                                android:id="@+id/tv_p_total_trip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="10"
+                                android:textColor="#00897B"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
                     </LinearLayout>
 
-                    <!-- Buttons -->
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#ECEFF1"
+                        android:layout_marginVertical="16dp" />
+
+                    <!-- Action Buttons -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
                         android:gravity="center"
                         android:orientation="horizontal">
 
@@ -165,14 +274,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
                             android:layout_weight="1"
-                            android:paddingVertical="12dp"
+                            android:paddingVertical="14dp"
                             android:text="Update"
                             android:textSize="15sp"
-                            app:backgroundTint="#1E88E5"
-                            app:cornerRadius="10dp"
-                            app:icon="@android:drawable/ic_menu_edit"
-                            app:iconGravity="textStart"
-                            app:iconTint="@android:color/white" />
+                            android:textColor="@color/white"
+                            app:backgroundTint="#00897B"
+                            app:cornerRadius="12dp" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_p_change_pass"
@@ -180,19 +287,20 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:layout_weight="1"
-                            android:paddingVertical="12dp"
-                            android:text="Change Password"
+                            android:layout_weight="1.5"
+                            android:paddingVertical="14dp"
+                            android:text="Change Pass"
                             android:textSize="15sp"
-                            app:backgroundTint="#E53935"
-                            app:cornerRadius="10dp"
-                            app:icon="@android:drawable/ic_menu_delete"
-                            app:iconGravity="textStart"
-                            app:iconTint="@android:color/white" />
+                            android:textColor="@color/white"
+                            app:backgroundTint="#FB8C00"
+                            app:cornerRadius="12dp" />
                     </LinearLayout>
 
                 </LinearLayout>
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

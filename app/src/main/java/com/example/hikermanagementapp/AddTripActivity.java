@@ -146,7 +146,7 @@ public class AddTripActivity extends AppCompatActivity {
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Xác nhận thông tin");
+        builder.setTitle("Information confirm");
         builder.setMessage(
                 "Name: " + name + "\n" +
                         "Destination: " + destination + "\n" +
