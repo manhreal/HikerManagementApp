@@ -27,7 +27,6 @@ public class SignupActivity extends AppCompatActivity {
         et_reg_email = findViewById(R.id.et_reg_email);
         et_reg_password = findViewById(R.id.et_reg_password);
         et_reg_password_cf = findViewById(R.id.et_reg_password_cf);
-
         btn_register = findViewById(R.id.btn_register);
         tv_link_login = findViewById(R.id.tv_link_login);
 
@@ -43,6 +42,7 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -51,12 +51,17 @@ public class SignupActivity extends AppCompatActivity {
         String email = et_reg_email.getText().toString().trim();
         String password = et_reg_password.getText().toString().trim();
         String password_cf = et_reg_password_cf.getText().toString().trim();
+        String name = "User";
+        String avatar = "default_avatar";
 
+        // Validation
         if (email.isEmpty()) {
             et_reg_email.setError("Please enter email");
+            et_reg_email.requestFocus();
             return;
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             et_reg_email.setError("Invalid email format");
+            et_reg_email.requestFocus();
             return;
         }
 
@@ -65,7 +70,7 @@ public class SignupActivity extends AppCompatActivity {
             et_reg_password.requestFocus();
             return;
         } else if (password.length() < 8) {
-            et_reg_password.setError("Password must be great than 8 character");
+            et_reg_password.setError("Password must be at least 8 characters");
             et_reg_password.requestFocus();
             return;
         }
@@ -77,24 +82,25 @@ public class SignupActivity extends AppCompatActivity {
         }
 
         if (!password.equals(password_cf)) {
-            et_reg_password_cf.setError("Password confirm not match");
+            et_reg_password_cf.setError("Password confirmation does not match");
             et_reg_password_cf.requestFocus();
             return;
         }
 
-        boolean reg_success = db.registerUser(email, password);
-
-        if (reg_success) {
-            Toast.makeText(SignupActivity.this,
-                    "Register successfully, please login again !",
-                    Toast.LENGTH_LONG).show();
-            finish(); // Back to Login
-        } else {
-            Toast.makeText(SignupActivity.this,
-                    "Email is existed !",
-                    Toast.LENGTH_SHORT).show();
+        // FIX: Check if email exists before registering
+        if (db.getUserIdByEmail(email) != -1) {
+            Toast.makeText(this, "Email already exists!", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-    }
+        // Register user
+        boolean reg_success = db.registerUser(email, password, name, avatar);
 
+        if (reg_success) {
+            Toast.makeText(this, "Register successfully! Please login.", Toast.LENGTH_LONG).show();
+            finish();
+        } else {
+            Toast.makeText(this, "Registration failed. Please try again.", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

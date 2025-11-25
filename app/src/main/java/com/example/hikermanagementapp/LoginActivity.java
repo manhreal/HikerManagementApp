@@ -23,10 +23,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // check login
+        // Check login status
         sharedPreferences = getSharedPreferences("MHikePrefs", MODE_PRIVATE);
         if (sharedPreferences.getBoolean("isLoggedIn", false)) {
-            // login success
             goToMainActivity();
             return;
         }
@@ -40,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         btn_login = findViewById(R.id.btn_login);
         tv_link_register = findViewById(R.id.tv_link_register);
 
-        // login event
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,29 +72,26 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // check login info
+        // Check login credentials
         if (db.checkUser(email, password)) {
-
-            // login successfully
             int userId = db.getUserIdByEmail(email);
 
-            // save login status
+            if (userId == -1) {
+                Toast.makeText(this, "Error retrieving user data", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Save login status - FIX: Use consistent key names
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("isLoggedIn", true);
             editor.putString("email", email);
-            editor.putInt("userId", userId);
+            editor.putInt("user_id", userId); // FIX: Changed from "userId" to "user_id"
             editor.apply();
 
-            Toast.makeText(LoginActivity.this,
-                    "Login successfully! Welcome " + email,
-                    Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(this, "Login successfully! Welcome " + email, Toast.LENGTH_SHORT).show();
             goToMainActivity();
         } else {
-            // Login failed
-            Toast.makeText(LoginActivity.this,
-                    "Incorrect email or password!",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Incorrect email or password!", Toast.LENGTH_SHORT).show();
         }
     }
 

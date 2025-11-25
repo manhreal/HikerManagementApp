@@ -55,7 +55,7 @@
                     <TextView
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
-                        android:text="📍 Place:"
+                        android:text="Place:"
                         android:textColor="#78909C"
                         android:textSize="15sp" />
 
@@ -99,7 +99,7 @@
                         <TextView
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
-                            android:text="📅 Date:"
+                            android:text="Date:"
                             android:textSize="15sp"
                             android:textColor="#78909C" />
 
@@ -124,7 +124,7 @@
                         <TextView
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
-                            android:text="📏 Length:"
+                            android:text="Length:"
                             android:textSize="15sp"
                             android:textColor="#78909C" />
 
@@ -150,7 +150,7 @@
                         <TextView
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
-                            android:text="⚡ Difficulty:"
+                            android:text="Difficulty:"
                             android:textSize="15sp"
                             android:textColor="#78909C" />
 
@@ -176,7 +176,7 @@
                         <TextView
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
-                            android:text="🅿️ Parking:"
+                            android:text="Parking:"
                             android:textSize="15sp"
                             android:textColor="#78909C" />
 

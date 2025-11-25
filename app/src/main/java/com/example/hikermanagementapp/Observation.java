@@ -6,20 +6,23 @@ public class Observation {
     private String type;
     private String time;
     private String note;
+    private String image;
 
-    public Observation(int id, int trip_id, String type, String time, String note) {
+    public Observation(int id, int trip_id, String type, String time, String note, String image) {
         this.id = id;
         this.trip_id = trip_id;
         this.type = type;
         this.time = time;
         this.note = note;
+        this.image = image;
     }
 
-    public Observation(int trip_id, String type, String time, String note) {
+    public Observation(int trip_id, String type, String time, String note, String image) {
         this.trip_id = trip_id;
         this.type = type;
         this.time = time;
         this.note = note;
+        this.image = image;
     }
 
     // Getters và Setters
@@ -61,5 +64,13 @@ public class Observation {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -78,10 +78,9 @@ public class TripDetailActivity extends AppCompatActivity {
         btn_d_trip_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Implement edit functionality
-                Toast.makeText(TripDetailActivity.this,
-                        "Chức năng sửa sẽ được cập nhật sau!",
-                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(TripDetailActivity.this, UpdateTripActivity.class);
+                intent.putExtra("trip_id", trip_id);
+                startActivity(intent);
             }
         });
 
@@ -156,8 +155,10 @@ public class TripDetailActivity extends AppCompatActivity {
                 String type = cursor.getString(cursor.getColumnIndexOrThrow("type"));
                 String time = cursor.getString(cursor.getColumnIndexOrThrow("time"));
                 String note = cursor.getString(cursor.getColumnIndexOrThrow("note"));
+                String image = cursor.getString(cursor.getColumnIndexOrThrow("image"));
 
-                Observation observation = new Observation(id, trip_id, type, time, note);
+
+                Observation observation = new Observation(id, trip_id, type, time, note, image);
                 observationList.add(observation);
             } while (cursor.moveToNext());
             cursor.close();
