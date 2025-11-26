@@ -54,7 +54,6 @@ public class SignupActivity extends AppCompatActivity {
         String name = "User";
         String avatar = "default_avatar";
 
-        // Validation
         if (email.isEmpty()) {
             et_reg_email.setError("Please enter email");
             et_reg_email.requestFocus();
@@ -87,7 +86,6 @@ public class SignupActivity extends AppCompatActivity {
             return;
         }
 
-        // FIX: Check if email exists before registering
         if (db.getUserIdByEmail(email) != -1) {
             Toast.makeText(this, "Email already exists!", Toast.LENGTH_SHORT).show();
             return;

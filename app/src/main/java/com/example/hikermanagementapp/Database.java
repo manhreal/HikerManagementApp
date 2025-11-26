@@ -9,7 +9,7 @@ import android.util.Log;
 
 public class Database extends SQLiteOpenHelper {
     private static final String DB_NAME = "m_hike";
-    private static final int DB_VER = 3; // UPDATED VERSION
+    private static final int DB_VER = 3;
 
     // Users table
     private static final String TABLE_USERS = "users";
@@ -68,7 +68,6 @@ public class Database extends SQLiteOpenHelper {
                 + TABLE_USERS + "(" + COL_USER_ID + "))";
         db.execSQL(create_trips_table);
 
-        // UPDATED: Added image column
         String create_observations_table = "CREATE TABLE " + TABLE_OBSERVATIONS + " (" +
                 COL_OBS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_OBS_TRIP_ID + " INTEGER, "
@@ -84,7 +83,6 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 3) {
-            // Add image column to existing observations table
             db.execSQL("ALTER TABLE " + TABLE_OBSERVATIONS + " ADD COLUMN " + COL_OBS_IMAGE + " TEXT");
         }
     }
@@ -295,7 +293,6 @@ public class Database extends SQLiteOpenHelper {
         return result > 0;
     }
 
-    // UPDATED: Added image parameter
     public long addObservation(int trip_id, String type, String time, String note, String imagePath) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -320,11 +317,36 @@ public class Database extends SQLiteOpenHelper {
         );
     }
 
-    public Cursor getObservationByTrip(int trip_id) {
+    public Cursor getObservationsPaginated(int tripId, int page, int pageSize) {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.query(TABLE_OBSERVATIONS, null,
-                COL_OBS_TRIP_ID + "=?",
-                new String[]{String.valueOf(trip_id)},
-                null, null, COL_OBS_TIME + " ASC");
+        int offset = (page - 1) * pageSize;
+
+        String query = "SELECT * FROM " + TABLE_OBSERVATIONS +
+                " WHERE " + COL_OBS_TRIP_ID + " = ?" +
+                " ORDER BY " + COL_OBS_TIME + " DESC" +
+                " LIMIT ? OFFSET ?";
+
+        return db.rawQuery(query, new String[]{
+                String.valueOf(tripId),
+                String.valueOf(pageSize),
+                String.valueOf(offset)
+        });
+    }
+
+    // Đếm tổng số observations
+    public int getObservationsCount(int tripId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM " + TABLE_OBSERVATIONS +
+                " WHERE " + COL_OBS_TRIP_ID + " = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(tripId)});
+        int count = 0;
+
+        if (cursor != null && cursor.moveToFirst()) {
+            count = cursor.getInt(0);
+            cursor.close();
+        }
+
+        return count;
     }
 }

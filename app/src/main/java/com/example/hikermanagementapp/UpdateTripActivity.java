@@ -141,21 +141,32 @@ public class UpdateTripActivity extends AppCompatActivity {
     private void showDatePicker() {
         Calendar calendar = Calendar.getInstance();
 
-        // Try to parse existing date
         String currentDate = et_u_trip_date.getText().toString();
         if (!currentDate.isEmpty()) {
             try {
                 String[] parts = currentDate.split("/");
                 if (parts.length == 3) {
                     int day = Integer.parseInt(parts[0]);
-                    int month = Integer.parseInt(parts[1]) - 1; // Month is 0-based
+                    int month = Integer.parseInt(parts[1]) - 1; // Month from 0
                     int year = Integer.parseInt(parts[2]);
                     calendar.set(year, month, day);
                 }
             } catch (Exception e) {
-                // Use current date if parsing fails
+                e.printStackTrace();
+                // todây
+                calendar = Calendar.getInstance();
             }
+        } else {
+            // today
+            calendar = Calendar.getInstance();
         }
+
+        int mDay = calendar.get(Calendar.DAY_OF_MONTH);
+        int mMonth = calendar.get(Calendar.MONTH) + 1;
+        int mYear = calendar.get(Calendar.YEAR);
+
+        et_u_trip_date.setText(String.format("%02d/%02d/%04d", mDay, mMonth, mYear));
+
 
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
@@ -247,14 +258,17 @@ public class UpdateTripActivity extends AppCompatActivity {
             return;
         }
 
-        // Update trip in database
+
+        // Update trip in db
         boolean result = db.updateTrip(trip_id, name, destination, date, require_parking,
                 length, difficulty, description);
 
         if (result) {
             Toast.makeText(this, "Trip updated successfully", Toast.LENGTH_SHORT).show();
+            setResult(RESULT_OK);
             finish();
-        } else {
+        }
+        else {
             Toast.makeText(this, "Failed to update trip", Toast.LENGTH_SHORT).show();
         }
     }

@@ -25,7 +25,6 @@ public class Observation {
         this.image = image;
     }
 
-    // Getters và Setters
     public int getObservationId() {
         return id;
     }

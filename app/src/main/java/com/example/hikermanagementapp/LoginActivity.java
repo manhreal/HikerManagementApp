@@ -81,11 +81,11 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // Save login status - FIX: Use consistent key names
+            // Save login status
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("isLoggedIn", true);
             editor.putString("email", email);
-            editor.putInt("user_id", userId); // FIX: Changed from "userId" to "user_id"
+            editor.putInt("user_id", userId);
             editor.apply();
 
             Toast.makeText(this, "Login successfully! Welcome " + email, Toast.LENGTH_SHORT).show();

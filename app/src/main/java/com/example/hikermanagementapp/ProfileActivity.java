@@ -45,7 +45,6 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        // Setup toolbar
         Toolbar toolbar = findViewById(R.id.p_tool_bar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -59,7 +58,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        // Initialize views
         img_avatar = findViewById(R.id.img_avatar);
         tv_p_name = findViewById(R.id.tv_p_name);
         tv_p_email = findViewById(R.id.tv_p_email);
@@ -71,7 +69,6 @@ public class ProfileActivity extends AppCompatActivity {
         db = new Database(this);
         sharedPreferences = getSharedPreferences("MHikePrefs", MODE_PRIVATE);
 
-        // FIX: Get userId with correct key
         userId = sharedPreferences.getInt("user_id", -1);
 
         if (userId == -1) {
@@ -82,7 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         loadUserProfile();
 
-        // Update name button
+        // Update name
         btn_p_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +87,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        // Change password button
+        // Change password
         btn_p_change_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +95,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        // Update avatar button
+        // Update avatar
         btn_p_update_avt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,7 +196,6 @@ public class ProfileActivity extends AppCompatActivity {
                 String newPass = et_new_pass.getText().toString().trim();
                 String confirmPass = et_confirm_pass.getText().toString().trim();
 
-                // Validation
                 if (oldPass.isEmpty()) {
                     Toast.makeText(ProfileActivity.this, "Please enter old password", Toast.LENGTH_SHORT).show();
                     return;
@@ -263,7 +259,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                 String avatarPath = file.getAbsolutePath();
 
-                // Update database
+                // Update db
                 if (db.updateUserAvatar(userId, avatarPath)) {
                     img_avatar.setImageBitmap(bitmap);
                     currentAvatarPath = avatarPath;

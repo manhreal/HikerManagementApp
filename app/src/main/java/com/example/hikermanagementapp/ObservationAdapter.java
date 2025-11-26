@@ -36,9 +36,9 @@ public class ObservationAdapter extends RecyclerView.Adapter<ObservationAdapter.
     public void onBindViewHolder(@NonNull ObservationViewHolder holder, int position) {
         Observation observation = observationList.get(position);
 
-        holder.tvType.setText(observation.getObservationType());
-        holder.tvTime.setText(observation.getObservationTime());
-        holder.tvComment.setText(observation.getNote());
+        holder.tv_o_type.setText(observation.getObservationType());
+        holder.tv_o_time.setText(observation.getObservationTime());
+        holder.tv_o_note.setText(observation.getNote());
 
         // Load and display image if exists
         String imagePath = observation.getImage();
@@ -46,13 +46,13 @@ public class ObservationAdapter extends RecyclerView.Adapter<ObservationAdapter.
             File imgFile = new File(imagePath);
             if (imgFile.exists()) {
                 Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                holder.imgObservation.setImageBitmap(bitmap);
-                holder.imgObservation.setVisibility(View.VISIBLE);
+                holder.img_o.setImageBitmap(bitmap);
+                holder.img_o.setVisibility(View.VISIBLE);
             } else {
-                holder.imgObservation.setVisibility(View.GONE);
+                holder.img_o.setVisibility(View.GONE);
             }
         } else {
-            holder.imgObservation.setVisibility(View.GONE);
+            holder.img_o.setVisibility(View.GONE);
         }
     }
 
@@ -67,15 +67,15 @@ public class ObservationAdapter extends RecyclerView.Adapter<ObservationAdapter.
     }
 
     public static class ObservationViewHolder extends RecyclerView.ViewHolder {
-        TextView tvType, tvTime, tvComment;
-        ImageView imgObservation;
+        TextView tv_o_type, tv_o_time, tv_o_note;
+        ImageView img_o;
 
         public ObservationViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvType = itemView.findViewById(R.id.tvObservationType);
-            tvTime = itemView.findViewById(R.id.tvObservationTime);
-            tvComment = itemView.findViewById(R.id.tvObservationComment);
-            imgObservation = itemView.findViewById(R.id.imgObservation);
+            tv_o_type = itemView.findViewById(R.id.tv_o_type);
+            tv_o_time = itemView.findViewById(R.id.tv_o_time);
+            tv_o_note = itemView.findViewById(R.id.tv_o_note);
+            img_o = itemView.findViewById(R.id.img_o);
         }
     }
 }

@@ -31,7 +31,7 @@
                 app:cardBackgroundColor="#E0F2F1">
 
                 <TextView
-                    android:id="@+id/tvObservationType"
+                    android:id="@+id/tv_o_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Animal"
@@ -55,7 +55,7 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    android:id="@+id/tvObservationTime"
+                    android:id="@+id/tv_o_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="14:30"
@@ -67,7 +67,7 @@
 
         <!-- Image -->
         <ImageView
-            android:id="@+id/imgObservation"
+            android:id="@+id/img_o"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
@@ -85,7 +85,7 @@
 
         <!-- Note -->
         <TextView
-            android:id="@+id/tvObservationComment"
+            android:id="@+id/tv_o_note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Saw a beautiful eagle flying over the mountain peak. It was an amazing sight!"

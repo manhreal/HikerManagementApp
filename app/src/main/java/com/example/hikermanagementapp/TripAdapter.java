@@ -40,7 +40,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
         holder.tv_i_trip_difficulty.setText(trip.getDifficulty());
         holder.tv_i_trip_require_parking.setText(trip.isRequireParking() ? "Yes" : "No");
 
-        // change difficulty color
+        // difficulty color
         switch (trip.getDifficulty().toLowerCase()) {
             case "Easy":
                 holder.tv_i_trip_difficulty.setTextColor(ct.getResources().getColor(android.R.color.holo_green_dark));

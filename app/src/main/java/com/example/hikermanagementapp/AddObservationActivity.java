@@ -2,6 +2,7 @@ package com.example.hikermanagementapp;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -68,7 +69,6 @@ public class AddObservationActivity extends AppCompatActivity {
 
         db = new Database(this);
 
-        // Initialize views
         sp_a_obs_type = findViewById(R.id.sp_a_obs_type);
         st_a_obs_time = findViewById(R.id.st_a_obs_time);
         et_a_obs_note = findViewById(R.id.et_a_obs_note);
@@ -78,7 +78,7 @@ public class AddObservationActivity extends AppCompatActivity {
         img_preview = findViewById(R.id.img_preview);
         card_image_preview = findViewById(R.id.card_image_preview);
 
-        // Setup spinner
+        // spinner data
         String[] observationTypes = {
                 "Animal",
                 "Plant",
@@ -88,6 +88,7 @@ public class AddObservationActivity extends AppCompatActivity {
                 "Local culture",
                 "Other"
         };
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, observationTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -97,7 +98,7 @@ public class AddObservationActivity extends AppCompatActivity {
         st_a_obs_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showTimePicker();
+                showDateTimePicker();
             }
         });
 
@@ -215,17 +216,16 @@ public class AddObservationActivity extends AppCompatActivity {
                 Bitmap bitmap = null;
 
                 if (requestCode == CAMERA_REQUEST) {
-                    // Get photo from camera
+                    // from camera
                     bitmap = (Bitmap) data.getExtras().get("data");
                 } else if (requestCode == PICK_IMAGE_REQUEST) {
-                    // Get photo from gallery
+                    // from gallery
                     Uri imageUri = data.getData();
                     InputStream inputStream = getContentResolver().openInputStream(imageUri);
                     bitmap = BitmapFactory.decodeStream(inputStream);
                 }
 
                 if (bitmap != null) {
-                    // Save image to internal storage
                     String fileName = "obs_" + System.currentTimeMillis() + ".jpg";
                     File file = new File(getFilesDir(), fileName);
                     FileOutputStream outputStream = new FileOutputStream(file);
@@ -234,7 +234,6 @@ public class AddObservationActivity extends AppCompatActivity {
 
                     imagePath = file.getAbsolutePath();
 
-                    // Display preview
                     img_preview.setImageBitmap(bitmap);
                     card_image_preview.setVisibility(View.VISIBLE);
 
@@ -255,22 +254,56 @@ public class AddObservationActivity extends AppCompatActivity {
         Toast.makeText(this, "Image removed", Toast.LENGTH_SHORT).show();
     }
 
-    private void showTimePicker() {
+//    private void showTimePicker() {
+//        Calendar calendar = Calendar.getInstance();
+//        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+//        int minute = calendar.get(Calendar.MINUTE);
+//
+//        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+//                new TimePickerDialog.OnTimeSetListener() {
+//                    @Override
+//                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//                        String time = String.format("%02d:%02d", hourOfDay, minute);
+//                        st_a_obs_time.setText(time);
+//                    }
+//                }, hour, minute, true);
+//
+//        timePickerDialog.show();
+//    }
+    private void showDateTimePicker() {
         Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        String time = String.format("%02d:%02d", hourOfDay, minute);
-                        st_a_obs_time.setText(time);
-                    }
-                }, hour, minute, true);
+        // Today
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        timePickerDialog.show();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                (view, selectedYear, selectedMonth, selectedDay) -> {
+
+                    // Pick time after pick day
+                    int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                    int minute = calendar.get(Calendar.MINUTE);
+
+                    TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                            (timeView, selectedHour, selectedMinute) -> {
+
+                                // Match day and time
+                                String dateTime = String.format(
+                                        "%02d/%02d/%04d %02d:%02d",
+                                        selectedDay, selectedMonth + 1, selectedYear,
+                                        selectedHour, selectedMinute
+                                );
+                                st_a_obs_time.setText(dateTime);
+
+                            }, hour, minute, true);
+
+                    timePickerDialog.show();
+                }, year, month, day);
+
+        datePickerDialog.show();
     }
+
 
     private void saveObservation() {
         String type = sp_a_obs_type.getSelectedItem().toString();
@@ -296,7 +329,7 @@ public class AddObservationActivity extends AppCompatActivity {
             return;
         }
 
-        // Save observation with image
+        // Save obs
         long result = db.addObservation(trip_id, type, time, note, imagePath);
 
         if (result != -1) {

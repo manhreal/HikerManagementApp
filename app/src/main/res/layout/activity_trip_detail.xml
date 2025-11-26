@@ -256,12 +256,12 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Observations -->
+            <!-- Observations Header with Mode Toggle -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
                 android:gravity="center_vertical">
 
                 <TextView
@@ -286,6 +286,96 @@
                     style="@style/Widget.MaterialComponents.Button" />
             </LinearLayout>
 
+            <!-- Pagination Mode Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/pagination_mode_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Mode Toggle -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Display Mode:"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#263238" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_mode_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="View All"
+                            android:textSize="12sp"
+                            android:minHeight="0dp"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="0dp"
+                            android:layout_marginEnd="8dp"
+                            app:backgroundTint="#00897B"
+                            app:cornerRadius="8dp"
+                            style="@style/Widget.MaterialComponents.Button" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_mode_pagination"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Pagination"
+                            android:textSize="12sp"
+                            android:minHeight="0dp"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="0dp"
+                            app:backgroundTint="#90A4AE"
+                            app:cornerRadius="8dp"
+                            style="@style/Widget.MaterialComponents.Button" />
+                    </LinearLayout>
+
+                    <!-- Page Size Selector (only visible in pagination mode) -->
+                    <LinearLayout
+                        android:id="@+id/page_size_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Items per page:"
+                            android:textSize="14sp"
+                            android:textColor="#546E7A" />
+
+                        <Spinner
+                            android:id="@+id/spinner_page_size"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:minWidth="100dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:paddingHorizontal="12dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <!-- Observations RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_observation"
@@ -293,6 +383,83 @@
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:clipToPadding="false" />
+
+            <!-- Pagination Controls -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/pagination_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp"
+                    android:gravity="center_vertical">
+
+                    <!-- Previous Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_prev_page"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="◀ Prev"
+                        android:textSize="13sp"
+                        android:textColor="@color/white"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        app:backgroundTint="#1E88E5"
+                        app:cornerRadius="8dp"
+                        style="@style/Widget.MaterialComponents.Button" />
+
+                    <!-- Page Info -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:id="@+id/tv_page_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Page 1 / 5"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#263238" />
+
+                        <TextView
+                            android:id="@+id/tv_items_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="(1-5 of 25 items)"
+                            android:textSize="12sp"
+                            android:textColor="#78909C"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <!-- Next Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_next_page"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Next ▶"
+                        android:textSize="13sp"
+                        android:textColor="@color/white"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        app:backgroundTint="#1E88E5"
+                        app:cornerRadius="8dp"
+                        style="@style/Widget.MaterialComponents.Button" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Empty State -->
             <LinearLayout
