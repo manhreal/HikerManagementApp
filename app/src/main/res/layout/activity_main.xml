@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#F8F9FA">
 
-    <!-- Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,14 +23,12 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Main -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- Search  -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,7 +65,6 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_trip"
             android:layout_width="match_parent"
@@ -77,7 +73,6 @@
             android:padding="12dp"
             android:clipToPadding="false" />
 
-        <!-- Empty State -->
         <LinearLayout
             android:id="@+id/trip_state_empty"
             android:layout_width="match_parent"
@@ -88,7 +83,6 @@
             android:visibility="gone"
             android:padding="32dp">
 
-            <!-- Icon  -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
@@ -136,7 +130,6 @@
 
     </LinearLayout>
 
-    <!-- Create trip -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_trip_add"
         android:layout_width="56dp"

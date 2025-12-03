@@ -254,22 +254,6 @@ public class AddObservationActivity extends AppCompatActivity {
         Toast.makeText(this, "Image removed", Toast.LENGTH_SHORT).show();
     }
 
-//    private void showTimePicker() {
-//        Calendar calendar = Calendar.getInstance();
-//        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-//        int minute = calendar.get(Calendar.MINUTE);
-//
-//        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-//                new TimePickerDialog.OnTimeSetListener() {
-//                    @Override
-//                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//                        String time = String.format("%02d:%02d", hourOfDay, minute);
-//                        st_a_obs_time.setText(time);
-//                    }
-//                }, hour, minute, true);
-//
-//        timePickerDialog.show();
-//    }
     private void showDateTimePicker() {
         Calendar calendar = Calendar.getInstance();
 

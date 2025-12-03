@@ -13,7 +13,6 @@
         android:padding="24dp"
         android:gravity="center">
 
-        <!-- Icon -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -32,7 +31,6 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -90,7 +88,6 @@
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Password -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -117,7 +114,6 @@
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Confirm Password -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -148,7 +144,6 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
@@ -162,7 +157,6 @@
             android:layout_marginBottom="24dp"
             style="@style/Widget.MaterialComponents.Button" />
 
-        <!-- Login Link -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

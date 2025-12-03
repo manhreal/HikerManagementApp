@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#F8F9FA">
 
-    <!-- App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +21,6 @@
             app:navigationIconTint="@android:color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Main Content -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,7 +33,6 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Profile Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,14 +47,12 @@
                     android:orientation="vertical"
                     android:padding="24dp">
 
-                    <!-- Avatar Section -->
                     <FrameLayout
                         android:layout_width="140dp"
                         android:layout_height="140dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="20dp">
 
-                        <!-- Avatar with Border -->
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -78,7 +73,6 @@
 
                     </FrameLayout>
 
-                    <!-- Update Avatar Button -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_p_update_avt"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -93,15 +87,12 @@
                         app:strokeWidth="2dp"
                         app:cornerRadius="12dp" />
 
-                    <!-- Divider -->
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#ECEFF1"
                         android:layout_marginBottom="20dp" />
 
-                    <!-- Info Section -->
-                    <!-- Name -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -152,7 +143,6 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!-- Email -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -202,7 +192,6 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!-- Total Trips -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -253,14 +242,12 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!-- Divider -->
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#ECEFF1"
                         android:layout_marginVertical="16dp" />
 
-                    <!-- Action Buttons -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

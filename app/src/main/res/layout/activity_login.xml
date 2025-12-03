@@ -13,7 +13,6 @@
         android:padding="24dp"
         android:gravity="center">
 
-        <!-- Logo -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="120dp"
             android:layout_height="120dp"
@@ -32,7 +31,6 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- App Name -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,7 +50,6 @@
             android:layout_marginBottom="40dp"
             android:gravity="center" />
 
-        <!-- Login Form Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,7 +64,6 @@
                 android:orientation="vertical"
                 android:padding="24dp">
 
-                <!-- Email -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -92,7 +88,6 @@
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Password -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -122,7 +117,6 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
@@ -137,7 +131,6 @@
             android:layout_marginBottom="24dp"
             style="@style/Widget.MaterialComponents.Button" />
 
-        <!-- Register Link -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

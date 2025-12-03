@@ -333,7 +333,6 @@ public class Database extends SQLiteOpenHelper {
         });
     }
 
-    // Đếm tổng số observations
     public int getObservationsCount(int tripId) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT COUNT(*) FROM " + TABLE_OBSERVATIONS +
